@@ -60,14 +60,16 @@ var smallestTrimmedNumbers = function (nums, queries) {
   for (const query of queries) {
     const k = query[0]; // kth smallest
     const trim = query[1]; // rightmost trim
-    console.log("k:", k, "trim:", trim);
+    // console.log("k:", k, "trim:", trim);
+
     // Step 1: Trim each number to its rightmost trim digits
     const trimmedNums = nums.map((num) => num.slice(-trim));
-    console.log(trimmedNums);
+    // console.log(trimmedNums);
 
     // Step 2: Create an array of indices from 0 to nums.length - 1
     const indices = Array.from({ length: nums.length }, (_, index) => index);
-    console.log(indices);
+    // console.log(indices);
+
     // Step 3: Sort the indices based on the trimmed numbers
     indices.sort((a, b) => {
       if (trimmedNums[a] !== trimmedNums[b]) {
@@ -75,15 +77,15 @@ var smallestTrimmedNumbers = function (nums, queries) {
       }
       return a - b; // If trimmed numbers are equal, use original index for comparison
     });
-    console.log(indices);
+    // console.log(indices);
 
     // Step 4: Find the index of the kth smallest trimmed number
     const resultIndex = indices[k - 1];
-    console.log("k", k, "resultIndex", resultIndex);
+    // console.log("k", k, "resultIndex", resultIndex);
 
     // Step 5: Push the answer for the current query to the result array
     answer.push(resultIndex);
-    console.log(answer);
+    // console.log(answer);
   }
 
   return answer;
